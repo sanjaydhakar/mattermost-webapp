@@ -18,7 +18,7 @@ function mapStateToProps(state, ownProps) {
     const license = getLicense(state);
     const config = getConfig(state);
 
-    const isLicensed = license && license.IsLicensed === 'true';
+    const isLicensed = true;
     const enableOpenServer = config.EnableOpenServer === 'true';
     const noAccounts = config.NoAccounts === 'true';
     const enableSignUpWithEmail = config.EnableSignUpWithEmail === 'true';
