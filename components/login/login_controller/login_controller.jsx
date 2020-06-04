@@ -831,7 +831,7 @@ class LoginController extends React.Component {
                         />
                         <div className='signup__content'>
                             <SiteNameAndDescription
-                                customDescriptionText={`This workspace requires you to sign in with your Gsuite Email.`}
+                                customDescriptionText={customDescriptionText}
                                 siteName={`Sign in to ${siteName}`}
                             />
                             {content}
