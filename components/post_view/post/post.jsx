@@ -15,6 +15,7 @@ import PostProfilePicture from 'components/post_profile_picture';
 import PostBody from 'components/post_view/post_body';
 import PostHeader from 'components/post_view/post_header';
 import PostContext from 'components/post_view/post_context';
+import CommentIcon from 'components/common/comment_icon';
 
 class Post extends React.PureComponent {
     static propTypes = {
@@ -73,6 +74,11 @@ class Post extends React.PureComponent {
          * Set to render this comment as a mention
          */
         isCommentMention: PropTypes.bool,
+
+        /**
+         * Set to render in mobile view
+         */
+        isMobile: PropTypes.bool,
 
         /**
          * The number of replies in the same thread as this post
@@ -346,6 +352,16 @@ class Post extends React.PureComponent {
             centerClass = 'center';
         }
 
+        let content;
+        if (!(post.root_id && post.root_id.length > 0) && this.props.replyCount) {
+            content = (
+                <CommentIcon
+                    handleCommentClick={this.handleCommentClick}
+                    commentCount={this.props.replyCount}
+                    postId={post.id}
+                />
+            );
+        }
         return (
             <PostContext.Provider value={{handlePopupOpened: this.handleDropdownOpened}}>
                 <div
@@ -395,6 +411,7 @@ class Post extends React.PureComponent {
                             />
                         </div>
                     </div>
+                    {content}
                 </div>
             </PostContext.Provider>
         );
