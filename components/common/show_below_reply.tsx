@@ -19,7 +19,7 @@ type Props = {
     extraClass: string;
 }
 
-export default class CommentIcon extends React.PureComponent<Props> {
+export default class ShowBelowReply extends React.PureComponent<Props> {
     public static defaultProps: Partial<Props> = {
         location: 'CENTER',
         searchStyle: '',
@@ -28,9 +28,15 @@ export default class CommentIcon extends React.PureComponent<Props> {
     }
 
     public render(): JSX.Element {
+        let commentCountSpan: JSX.Element | null = null;
         let iconStyle = 'post-menu__item post-menu__item--wide post-menu__item--comment';
         if (this.props.commentCount > 0) {
             iconStyle += ' post-menu__item--show';
+            commentCountSpan = (
+                <span className='post-menu__comment-count'>
+                    {`${this.props.commentCount} replies`}
+                </span>
+            );
         } else if (this.props.searchStyle !== '') {
             iconStyle = iconStyle + ' ' + this.props.searchStyle;
         }
@@ -61,6 +67,7 @@ export default class CommentIcon extends React.PureComponent<Props> {
                 >
                     <span className='d-flex align-items-center'>
                         <ReplyIcon className='icon icon--small'/>
+                        {commentCountSpan}
                     </span>
                 </button>
             </OverlayTrigger>

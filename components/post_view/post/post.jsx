@@ -15,7 +15,7 @@ import PostProfilePicture from 'components/post_profile_picture';
 import PostBody from 'components/post_view/post_body';
 import PostHeader from 'components/post_view/post_header';
 import PostContext from 'components/post_view/post_context';
-import CommentIcon from 'components/common/comment_icon';
+import ShowBelowReply from 'components/common/show_below_reply';
 
 class Post extends React.PureComponent {
     static propTypes = {
@@ -353,12 +353,14 @@ class Post extends React.PureComponent {
         }
 
         let content;
-        if (!(post.root_id && post.root_id.length > 0) && this.props.replyCount) {
+        const commentIconExtraClass = 'post-menu__comment-show-below';
+        if ((!post.root_id && Boolean(this.props.replyCount))) {
             content = (
-                <CommentIcon
+                <ShowBelowReply
                     handleCommentClick={this.handleCommentClick}
                     commentCount={this.props.replyCount}
                     postId={post.id}
+                    extraClass={commentIconExtraClass}
                 />
             );
         }
