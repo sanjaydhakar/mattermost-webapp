@@ -46,7 +46,7 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
         }
 
         const tooltip = (
-            <Tooltip
+            <	Tooltip
                 id='comment-icon-tooltip'
                 className='hidden-xs'
             >
@@ -69,7 +69,7 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
                     className={iconStyle + ' ' + this.props.extraClass}
                     onClick={this.props.handleCommentClick}
                 >
-                    <span className='d-flex align-items-center'>
+                    <span className='d-flex align-items-center' style={{ color: '#2389d7' }}>
                         <ReplyIcon className='icon icon--small'/>
                         {commentCountSpan}
                     </span>
