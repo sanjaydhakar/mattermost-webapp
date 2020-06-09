@@ -704,8 +704,8 @@ class LoginController extends React.Component {
                         <span className='icon'/>
                         <span>
                             <FormattedMessage
-                                id='login.google'
-                                defaultMessage='Google Apps'
+                                id='Sign in with Google'
+                                defaultMessage='Sign in with Google'
                             />
                         </span>
                     </span>
@@ -832,7 +832,7 @@ class LoginController extends React.Component {
                         <div className='signup__content'>
                             <SiteNameAndDescription
                                 customDescriptionText={customDescriptionText}
-                                siteName={siteName}
+                                siteName={`Sign in to ${siteName}`}
                             />
                             {content}
                         </div>
