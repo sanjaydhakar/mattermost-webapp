@@ -17,6 +17,7 @@ type Props = {
     commentCount: number;
     postId?: string;
     extraClass: string;
+    lastReplyCreatedAt: number;
 }
 
 export default class ShowBelowReply extends React.PureComponent<Props> {

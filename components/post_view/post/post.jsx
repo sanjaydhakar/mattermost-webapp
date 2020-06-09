@@ -95,6 +95,11 @@ class Post extends React.PureComponent {
          */
         channelIsArchived: PropTypes.bool.isRequired,
 
+        /**
+         * Whether or not the channel that contains this post is archived
+         */
+        lastReplyCreatedAt: PropTypes.number,
+
         intl: intlShape.isRequired,
         actions: PropTypes.shape({
             selectPost: PropTypes.func.isRequired,
@@ -361,6 +366,7 @@ class Post extends React.PureComponent {
                     commentCount={this.props.replyCount}
                     postId={post.id}
                     extraClass={commentIconExtraClass}
+                    lastReplyCreatedAt={this.props.lastReplyCreatedAt}
                 />
             );
         }
