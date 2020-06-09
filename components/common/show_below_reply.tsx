@@ -31,11 +31,15 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
     public render(): JSX.Element {
         let commentCountSpan: JSX.Element | null = null;
         let iconStyle = 'post-menu__item post-menu__item--wide post-menu__item--comment';
+        let reply = 'reply';
+        if(this.props.commentCount > 1){
+        	reply = 'replies'
+        } 
         if (this.props.commentCount > 0) {
             iconStyle += ' post-menu__item--show';
             commentCountSpan = (
                 <span className='post-menu__comment-count'>
-                    {`${this.props.commentCount} replies`}
+                    {`${this.props.commentCount} ${reply}`}
                 </span>
             );
         } else if (this.props.searchStyle !== '') {
@@ -43,7 +47,7 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
         }
 
         const tooltip = (
-            <Tooltip
+            <	Tooltip
                 id='comment-icon-tooltip'
                 className='hidden-xs'
             >
@@ -66,7 +70,7 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
                     className={iconStyle + ' ' + this.props.extraClass}
                     onClick={this.props.handleCommentClick}
                 >
-                    <span className='d-flex align-items-center'>
+                    <span className='d-flex align-items-center' style={{ color: '#2389d7' }}>
                         <ReplyIcon className='icon icon--small'/>
                         {commentCountSpan}
                     </span>
