@@ -56,6 +56,10 @@
     user-select: none;
 }
 
+.post-menu__comment-show-below {
+    margin-left: 50px !important;
+}
+
 @media (min-width: 768px) {
     .post-menu__item {
         display: none;

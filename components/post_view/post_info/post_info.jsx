@@ -179,7 +179,7 @@ export default class PostInfo extends React.PureComponent {
         const hover = this.props.hover || this.state.showEmojiPicker || this.state.showDotMenu || this.state.showOptionsMenuWithoutHover;
 
         const showCommentIcon = fromAutoResponder ||
-        (!isSystemMessage && (isMobile || hover || (!post.root_id && Boolean(this.props.replyCount)) || this.props.isFirstReply));
+        (!isSystemMessage && (isMobile || hover));
         const commentIconExtraClass = isMobile ? '' : 'pull-right';
         let commentIcon;
         if (showCommentIcon) {

@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 
 import {Posts} from 'mattermost-redux/constants';
 import {getChannel} from 'mattermost-redux/selectors/entities/channels';
-import {getPost, makeIsPostCommentMention} from 'mattermost-redux/selectors/entities/posts';
+import {getPost, makeIsPostCommentMention, makeGetPostIdsForThread} from 'mattermost-redux/selectors/entities/posts';
 import {get} from 'mattermost-redux/selectors/entities/preferences';
 import {getCurrentUserId} from 'mattermost-redux/selectors/entities/users';
 import {isSystemMessage} from 'mattermost-redux/utils/post_utils';
@@ -40,6 +40,7 @@ function makeMapStateToProps() {
     const getReplyCount = makeGetReplyCount();
     const isPostCommentMention = makeIsPostCommentMention();
     const createAriaLabelForPost = makeCreateAriaLabelForPost();
+    const getPostIdsForThread = makeGetPostIdsForThread();
 
     return (state, ownProps) => {
         const post = ownProps.post || getPost(state, ownProps.postId);
@@ -62,6 +63,15 @@ function makeMapStateToProps() {
             previousPostIsComment = Boolean(previousPost.root_id);
         }
 
+        let lastReplyCreatedAt;
+        if (getReplyCount(state, post) > 0) {
+            const postIdArray = getPostIdsForThread(state, ownProps.postId);
+            if (postIdArray.length > 1) {
+                const lastReplyPost = getPost(state, postIdArray[0]);
+                lastReplyCreatedAt = lastReplyPost.create_at;
+            }
+        }
+
         return {
             post,
             createAriaLabel: createAriaLabelForPost(state, post),
@@ -74,6 +84,7 @@ function makeMapStateToProps() {
             center: get(state, Preferences.CATEGORY_DISPLAY_SETTINGS, Preferences.CHANNEL_DISPLAY_MODE, Preferences.CHANNEL_DISPLAY_MODE_DEFAULT) === Preferences.CHANNEL_DISPLAY_MODE_CENTERED,
             compactDisplay: get(state, Preferences.CATEGORY_DISPLAY_SETTINGS, Preferences.MESSAGE_DISPLAY, Preferences.MESSAGE_DISPLAY_DEFAULT) === Preferences.MESSAGE_DISPLAY_COMPACT,
             channelIsArchived: isArchivedChannel(channel),
+            lastReplyCreatedAt,
         };
     };
 }

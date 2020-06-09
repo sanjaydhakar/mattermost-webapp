@@ -15,6 +15,7 @@ import PostProfilePicture from 'components/post_profile_picture';
 import PostBody from 'components/post_view/post_body';
 import PostHeader from 'components/post_view/post_header';
 import PostContext from 'components/post_view/post_context';
+import ShowBelowReply from 'components/common/show_below_reply';
 
 class Post extends React.PureComponent {
     static propTypes = {
@@ -75,6 +76,11 @@ class Post extends React.PureComponent {
         isCommentMention: PropTypes.bool,
 
         /**
+         * Set to render in mobile view
+         */
+        isMobile: PropTypes.bool,
+
+        /**
          * The number of replies in the same thread as this post
          */
         replyCount: PropTypes.number,
@@ -88,6 +94,11 @@ class Post extends React.PureComponent {
          * Whether or not the channel that contains this post is archived
          */
         channelIsArchived: PropTypes.bool.isRequired,
+
+        /**
+         * Whether or not the channel that contains this post is archived
+         */
+        lastReplyCreatedAt: PropTypes.number,
 
         intl: intlShape.isRequired,
         actions: PropTypes.shape({
@@ -346,6 +357,19 @@ class Post extends React.PureComponent {
             centerClass = 'center';
         }
 
+        let content;
+        const commentIconExtraClass = 'post-menu__comment-show-below';
+        if ((!post.root_id && Boolean(this.props.replyCount))) {
+            content = (
+                <ShowBelowReply
+                    handleCommentClick={this.handleCommentClick}
+                    commentCount={this.props.replyCount}
+                    postId={post.id}
+                    extraClass={commentIconExtraClass}
+                    lastReplyCreatedAt={this.props.lastReplyCreatedAt}
+                />
+            );
+        }
         return (
             <PostContext.Provider value={{handlePopupOpened: this.handleDropdownOpened}}>
                 <div
@@ -395,6 +419,7 @@ class Post extends React.PureComponent {
                             />
                         </div>
                     </div>
+                    {content}
                 </div>
             </PostContext.Provider>
         );
