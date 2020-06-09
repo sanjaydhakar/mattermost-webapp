@@ -9,6 +9,8 @@ import {localizeMessage} from 'utils/utils.jsx';
 
 import OverlayTrigger from 'components/overlay_trigger';
 import ReplyIcon from 'components/widgets/icons/reply_icon';
+import RecentDate from 'components/recent_date'
+import LocalDateTime from 'components/local_date_time';
 
 type Props = {
     location: 'CENTER' | 'SEARCH';
@@ -24,7 +26,7 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
     public static defaultProps: Partial<Props> = {
         location: 'CENTER',
         searchStyle: '',
-        commentCount: 0,
+        commentCount: 0,	
         extraClass: '',
     }
 
@@ -35,10 +37,25 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
         if(this.props.commentCount > 1){
         	reply = 'replies'
         } 
+        const dateString = (
+            <RecentDate
+                value={this.props.lastReplyCreatedAt}
+                weekday='short'
+                month='short'
+                day='2-digit'
+              	year='numeric'
+            />
+        );
+        const localDateTime = (
+            <LocalDateTime
+                eventTime={this.props.lastReplyCreatedAt}
+            />
+        );
+        
         if (this.props.commentCount > 0) {
             iconStyle += ' post-menu__item--show';
             commentCountSpan = (
-                <span className='post-menu__comment-count'>
+                <span className='post-menu__comment-count' style={{ color: '#2389d7' }}>
                     {`${this.props.commentCount} ${reply}`}
                 </span>
             );
@@ -57,7 +74,7 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
                 />
             </Tooltip>
         );
-
+	
         return (
             <OverlayTrigger
                 delayShow={500}
@@ -70,9 +87,13 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
                     className={iconStyle + ' ' + this.props.extraClass}
                     onClick={this.props.handleCommentClick}
                 >
-                    <span className='d-flex align-items-center' style={{ color: '#2389d7' }}>
+                    <span className='d-flex align-items-center' >
                         <ReplyIcon className='icon icon--small'/>
-                        {commentCountSpan}
+                        {commentCountSpan} 
+                        <strong>&nbsp; Last Reply At: &nbsp;</strong>
+                        {dateString}
+                        &nbsp;
+                        {localDateTime}
                     </span>
                 </button>
             </OverlayTrigger>
