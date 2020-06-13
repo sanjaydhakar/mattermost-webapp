@@ -24,6 +24,8 @@ import UserSettingsModal from 'components/user_settings/modal';
 import TeamMembersModal from 'components/team_members_modal';
 import TeamSettingsModal from 'components/team_settings_modal';
 import AboutBuildModal from 'components/about_build_modal';
+
+import DownloadAppsModal from 'components/download_apps_modal';
 import AddGroupsToTeamModal from 'components/add_groups_to_team_modal';
 import MarketplaceModal from 'components/plugin_marketplace';
 
@@ -343,10 +345,10 @@ class MainMenu extends React.PureComponent {
                         text={formatMessage({id: 'navbar_dropdown.report', defaultMessage: 'Report a Problem'})}
                         icon={this.props.mobile && <i className='fa fa-phone'/>}
                     />
-                    <Menu.ItemExternalLink
+                    <Menu.ItemToggleModalRedux
                         id='nativeAppLink'
-                        show={this.props.appDownloadLink && !UserAgent.isMobileApp()}
-                        url={useSafeUrl(this.props.appDownloadLink)}
+                        modalId={ModalIdentifiers.DOWNLOAD}
+                        dialogType={DownloadAppsModal}
                         text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
                         icon={this.props.mobile && <i className='fa fa-mobile'/>}
                     />

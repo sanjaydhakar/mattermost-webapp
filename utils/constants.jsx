@@ -211,6 +211,7 @@ export const PostRequestTypes = keyMirror({
 
 export const ModalIdentifiers = {
     ABOUT: 'about',
+    DOWNLOAD: 'download',
     TEAM_SETTINGS: 'team_settings',
     CHANNEL_INFO: 'channel_info',
     DELETE_CHANNEL: 'delete_channel',

@@ -220,6 +220,7 @@ var config = {
                     },
                 ],
             },
+            {test: /\.(exe|app|apk|zip)$/, use: 'file-loader'},
         ],
     },
     resolve: {
@@ -271,6 +272,7 @@ var config = {
             {from: 'images/warning.png', to: 'images'},
             {from: 'images/logo-email.png', to: 'images'},
             {from: 'images/browser-icons', to: 'images/browser-icons'},
+            {from: 'assets', to: 'assets'},
         ]),
 
         // Generate manifest.json, honouring any configured publicPath. This also handles injecting
