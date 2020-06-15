@@ -53,10 +53,12 @@ export default class TutorialIntroScreens extends React.Component {
         });
     };
 
-    handleShow = () => {
+    handleShow = (e) => {
+        e.preventDefault();
         this.setState({
             show: true,
         });
+        return false;
     }
 
     handleNext = () => {
@@ -172,16 +174,33 @@ export default class TutorialIntroScreens extends React.Component {
             appDownloadLink = (
                 <FormattedMessage
                     id='tutorial_intro.mobileApps'
-                    defaultMessage='Install the apps for PC, Mac, iOS and Android for easy access and notifications on the go.'
+                    defaultMessage='Install the apps for {link} for easy access and notifications on the go.'
+                    values={{
+                        link: (
+                            <a
+                                id='appDownloadLink'
+                                href="#"
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                onClick={this.handleShow}
+                            >
+                                <FormattedMessage
+                                    id='tutorial_intro.mobileAppsLinkText'
+                                    defaultMessage='PC, Mac, iOS and Android'
+                                />
+                            </a>
+                        ),
+                    }}
                 />
             );
 
             appDownloadImage = (
                 <a
                     id='appDownloadImage'
-                    href={link}
+                    href="#"
                     target='_blank'
                     rel='noopener noreferrer'
+                    onClick={this.handleShow}
                 >
                     <img
                         alt={'tutorial icons'}
@@ -214,10 +233,6 @@ export default class TutorialIntroScreens extends React.Component {
                 </p>
                 {appDownloadLink}
                 {appDownloadImage}
-                <Button variant="primary" onClick={this.handleShow}>
-                    {'Download Apps'}
-                </Button>
-
                 <Modal
                     show={this.state.show}
                     onHide={this.handleClose}
