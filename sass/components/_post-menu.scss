@@ -60,6 +60,30 @@
     margin-left: 50px !important;
 }
 
+.post-menu__comment-show-below-last-reply-at {
+	flex: 2 !important;
+	flex-direction: 'row' !important;
+	justify-content: 'flex-start' !important; 
+}
+
+.post-menu__comment-show-below-last-reply-at-text {
+	margin-left: 5px !important;
+	color: v(center-channel-color-40) !important;
+}
+
+.post-menu__comment-show-below-last-reply-time {
+	margin-left: 5px !important;
+	fill: v(center-channel-color-72) !important;
+	color: v(center-channel-color-72) !important;
+	font-size: 1.1em !important;
+
+}
+
+.post-menu__comment-show-below-last-reply-date {
+	margin-left: 5px !important;
+	color: v(center-channel-color-40) !important;
+}
+
 @media (min-width: 768px) {
     .post-menu__item {
         display: none;
