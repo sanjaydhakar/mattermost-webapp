@@ -93,7 +93,7 @@ export default class ShowBelowReply extends React.PureComponent<Props> {
                     <span className='align-items-center post-menu__comment-show-below-last-reply-at' >
                         <ReplyIcon className='icon icon--small'/>
                         {commentCountSpan}
-                        <span className='post-menu__comment-show-below-last-reply-at-text'>{'Last Reply At:'}</span>
+                        <span className='post-menu__comment-show-below-last-reply-at-text'>{'Last reply at:'}</span>
                         <span className='post-menu__comment-show-below-last-reply-date'>{dateString}</span>
                         <span className='post-menu__comment-show-below-last-reply-time'>{localDateTime}</span>
                     </span>
