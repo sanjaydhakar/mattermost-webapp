@@ -83,10 +83,10 @@ export default class DownloadAppsModal extends React.PureComponent {
                             <Button href={androidApp} variant="link" download>{'Download'}</Button>{' '}
                         </div>
                         <div className='grid-item'>
-                            <img src={windowslogo} className='modal-img-custom'/>
-                            <h3>{'Windows'}</h3>
-                            <p className='about-modal__subtitle pb-2'>{'Supported on Windows 7+'}</p>
-                            <Button href={windowsApp} variant="link" download>{'Download'}</Button>{' '}
+                            <img src={ioslogo} className='modal-img-custom'/>
+                            <h3>{'iOS'}</h3>
+                            <p className='about-modal__subtitle pb-2'>{'Supported on iOS 11+'}</p>
+                            <Button href="https://apps.apple.com/us/app/mattermost/id1257222717" variant="link">{'Download from AppStore'}</Button>{' '}
                         </div>
                         <div className='grid-item'>
                             <img src={macoslogo} className='modal-img-custom'/>
@@ -95,10 +95,10 @@ export default class DownloadAppsModal extends React.PureComponent {
                             <Button href={macosApp} variant="link">{'Download'}</Button>{' '}
                         </div>
                         <div className='grid-item'>
-                            <img src={ioslogo} className='modal-img-custom'/>
-                            <h3>{'iOS'}</h3>
-                            <p className='about-modal__subtitle pb-2'>{'Supported on iOS 11+'}</p>
-                            <Button href="https://apps.apple.com/us/app/mattermost/id1257222717" variant="link">{'Download from AppStore'}</Button>{' '}
+                            <img src={windowslogo} className='modal-img-custom'/>
+                            <h3>{'Windows'}</h3>
+                            <p className='about-modal__subtitle pb-2'>{'Supported on Windows 7+'}</p>
+                            <Button href={windowsApp} variant="link" download>{'Download'}</Button>{' '}
                         </div>
                     </div>
                 </Modal.Body>
