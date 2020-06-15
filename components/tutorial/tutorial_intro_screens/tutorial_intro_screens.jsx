@@ -4,6 +4,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
+import {Modal, Button} from 'react-bootstrap';
 
 import {trackEvent} from 'actions/diagnostics_actions.jsx';
 import {Constants, Preferences, ModalIdentifiers} from 'utils/constants.jsx';
@@ -11,6 +12,15 @@ import {useSafeUrl} from 'utils/url';
 import AppIcons from 'images/appIcons.png';
 import ModalToggleButtonRedux from 'components/toggle_modal_button_redux';
 import InvitationModal from 'components/invitation_modal';
+
+import ioslogo from '../../../images/download_ios.png';
+import androidlogo from '../../../images/download_android.png';
+import windowslogo from '../../../images/download_windows.png';
+import macoslogo from '../../../images/download_macos.png';
+
+import androidApp from '../../../assets/Flipchat.apk';
+import windowsApp from '../../../assets/FlipChat-Windows.exe';
+import macosApp from '../../../assets/FlipChat.zip';
 
 const NUM_SCREENS = 3;
 
@@ -31,7 +41,22 @@ export default class TutorialIntroScreens extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {currentScreen: 0};
+        this.state = {
+            currentScreen: 0,
+            show: false,
+        };
+    }
+
+    handleClose = () => {
+        this.setState({
+            show: false,
+        });
+    };
+
+    handleShow = () => {
+        this.setState({
+            show: true,
+        });
     }
 
     handleNext = () => {
@@ -147,22 +172,7 @@ export default class TutorialIntroScreens extends React.Component {
             appDownloadLink = (
                 <FormattedMessage
                     id='tutorial_intro.mobileApps'
-                    defaultMessage='Install the apps for {link} for easy access and notifications on the go.'
-                    values={{
-                        link: (
-                            <a
-                                id='appDownloadLink'
-                                href={link}
-                                target='_blank'
-                                rel='noopener noreferrer'
-                            >
-                                <FormattedMessage
-                                    id='tutorial_intro.mobileAppsLinkText'
-                                    defaultMessage='PC, Mac, iOS and Android'
-                                />
-                            </a>
-                        ),
-                    }}
+                    defaultMessage='Install the apps for PC, Mac, iOS and Android for easy access and notifications on the go.'
                 />
             );
 
@@ -204,6 +214,52 @@ export default class TutorialIntroScreens extends React.Component {
                 </p>
                 {appDownloadLink}
                 {appDownloadImage}
+                <Button variant="primary" onClick={this.handleShow}>
+                    {'Download Apps'}
+                </Button>
+
+                <Modal
+                    show={this.state.show}
+                    onHide={this.handleClose}
+                    dialogClassName='a11y__modal about-modal'
+                    role='dialog'
+                    aria-labelledby='aboutModalLabel'
+                >
+                    <Modal.Header closeButton={true}>
+                        <Modal.Title
+                            componentClass='h1'
+                            id='aboutModalLabel'
+                        >{'Download Apps'}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className='grid-container'>
+                            <div className='grid-item'>
+                                <img src={androidlogo} className='modal-img-custom'/>
+                                <h3>{'Android'}</h3>
+                                <p className='about-modal__subtitle pb-2'>{'Supported on Android 7.0+'}</p>
+                                <Button href={androidApp} variant="link" download>{'Download'}</Button>{' '}
+                            </div>
+                            <div className='grid-item'>
+                                <img src={ioslogo} className='modal-img-custom'/>
+                                <h3>{'iOS'}</h3>
+                                <p className='about-modal__subtitle pb-2'>{'Supported on iOS 11+'}</p>
+                                <Button href="https://apps.apple.com/us/app/mattermost/id1257222717" variant="link">{'Download from AppStore'}</Button>{' '}
+                            </div>
+                            <div className='grid-item'>
+                                <img src={macoslogo} className='modal-img-custom'/>
+                                <h3>{'macOS'}</h3>
+                                <p className='about-modal__subtitle pb-2'>{'Supported on 10.12+'}</p>
+                                <Button href={macosApp} variant="link">{'Download'}</Button>{' '}
+                            </div>
+                            <div className='grid-item'>
+                                <img src={windowslogo} className='modal-img-custom'/>
+                                <h3>{'Windows'}</h3>
+                                <p className='about-modal__subtitle pb-2'>{'Supported on Windows 7+'}</p>
+                                <Button href={windowsApp} variant="link" download>{'Download'}</Button>{' '}
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
                 {circles}
             </div>
         );
