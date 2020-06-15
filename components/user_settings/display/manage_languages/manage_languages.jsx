@@ -179,7 +179,7 @@ export default class ManageLanguage extends React.Component {
                     <br/>
                     <FormattedMarkdownMessage
                         id='user.settings.languages.promote'
-                        defaultMessage='Select which language Mattermost displays in the user interface.\n \nWould you like to help with translations? Join the [Mattermost Translation Server](!http://translate.mattermost.com/) to contribute.'
+                        defaultMessage='Select which language Flipchat displays in the user interface.\n \nWould you like to help with translations? Join the [Flipchat Translation Server](!http://translate.mattermost.com/) to contribute.'
                     />
                 </div>
             </div>

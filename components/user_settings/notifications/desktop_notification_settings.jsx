@@ -97,7 +97,7 @@ export default class DesktopNotificationSettings extends React.Component {
                         <div className='mt-5'>
                             <FormattedMessage
                                 id='user.settings.notifications.sounds_info'
-                                defaultMessage='Notification sounds are available on Firefox, Edge, Safari, Chrome and Mattermost Desktop Apps.'
+                                defaultMessage='Notification sounds are available on Firefox, Edge, Safari, Chrome and Desktop Apps.'
                             />
                         </div>
                     </fieldset>
@@ -186,7 +186,7 @@ export default class DesktopNotificationSettings extends React.Component {
                     <div className='mt-5'>
                         <FormattedMessage
                             id='user.settings.notifications.info'
-                            defaultMessage='Desktop notifications are available on Edge, Firefox, Safari, Chrome and Mattermost Desktop Apps.'
+                            defaultMessage='Desktop notifications are available on Edge, Firefox, Safari, Chrome and Flipchat Desktop Apps.'
                         />
                     </div>
                 </fieldset>

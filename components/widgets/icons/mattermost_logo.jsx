@@ -10,7 +10,7 @@ export default class MattermostLogo extends React.PureComponent {
             <span {...this.props}>
                 <FormattedMessage
                     id='generic_icons.mattermost'
-                    defaultMessage='Mattermost Logo'
+                    defaultMessage='Flipchat Logo'
                 >
                     {(ariaLabel) => (
                         <svg
