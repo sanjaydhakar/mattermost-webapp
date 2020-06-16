@@ -141,7 +141,7 @@ export default class TutorialIntroScreens extends React.Component {
                 <h1>
                     <FormattedMessage
                         id='tutorial_intro.screenOne.title2'
-                        defaultMessage='Mattermost'
+                        defaultMessage='Flipchat'
                     />
                 </h1>
                 <p>
@@ -216,7 +216,7 @@ export default class TutorialIntroScreens extends React.Component {
                 <h3>
                     <FormattedMessage
                         id='tutorial_intro.screenTwo.title'
-                        defaultMessage='How Mattermost Works:'
+                        defaultMessage='How Flipchat Works:'
                     />
                 </h3>
                 <p>

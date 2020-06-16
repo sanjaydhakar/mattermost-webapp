@@ -64,7 +64,7 @@ export default function HelpMessaging(): JSX.Element {
             <p>
                 <FormattedMarkdownMessage
                     id='help.messaging.attach'
-                    defaultMessage='**Attach files** by dragging and dropping into Mattermost or clicking the attachment icon in the text input box.'
+                    defaultMessage='**Attach files** by dragging and dropping into Flipchat or clicking the attachment icon in the text input box.'
                 />
             </p>
             <p className='links'>
